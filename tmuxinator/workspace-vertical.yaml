@@ -1,9 +1,11 @@
 name: workspace-vertical
 root: <%= @args[0] %>
+startup_pane: 3
 windows:
     - editor:
-        layout: 10c4,119x98,0,0[119x29,0,0{59x29,0,0,0,59x29,60,0,1},119x68,0,30,2]a
+        layout: c4fc,119x98,0,0[119x43,0,0{47x43,0,0,0,71x43,48,0[71x10,48,0,1,71x32,48,11,2]},119x54,0,44,3]
         panes:
-            - watch -n 1 -d --color tree -C
-            - watch -n1 -d --color 'git colored log --graph --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset" --abbrev-commit'
-            - 
+            - watch -n 1 -d --color tree -C -I build
+            - watch -n1 -d --color git colored status -s
+            - watch -n1 -d --color 'git colored log --graph --pretty=format="%Cred%h%Creset %<(35,trunc)%s %C(bold blue)<%an>%Creset" --abbrev-commit'
+            - # This is the default focus, open vim or whatever here

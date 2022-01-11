@@ -1,2 +1,6 @@
 #!/bin/bash
+
+# Forces color independent of global settings, this is useful because commands like "watch" will suppress output even when specified
+# Use like: 
+#   $ git colored log
 git -c color.ui=always "$@" | sed -r $"s/\033\[([[:digit:]][[:digit:]])m/\033\[0;\\1m/g; s/\033\[m/\033\[0m/g"
