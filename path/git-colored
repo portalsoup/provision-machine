@@ -1,0 +1,2 @@
+#!/bin/bash
+git -c color.ui=always "$@" | sed -r $"s/\033\[([[:digit:]][[:digit:]])m/\033\[0;\\1m/g; s/\033\[m/\033\[0m/g"

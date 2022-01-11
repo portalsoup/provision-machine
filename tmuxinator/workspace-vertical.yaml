@@ -1,8 +1,9 @@
 name: workspace-vertical
+root: <%= @args[0] %>
 windows:
     - editor:
-        layout: 94bd,119x98,0,0[119x17,0,0{59x17,0,0,1,59x17,60,0,5},119x80,0,18,4]
+        layout: 10c4,119x98,0,0[119x29,0,0{59x29,0,0,0,59x29,60,0,1},119x68,0,30,2]a
         panes:
-            - tree
-            - vim
+            - watch -n 1 -d --color tree -C
+            - watch -n1 -d --color 'git colored log --graph --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset" --abbrev-commit'
             - 
