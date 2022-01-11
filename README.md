@@ -9,8 +9,6 @@ group all content by platform and general
 first all platform specific tasks should run, to install software and configure the use of tools
 then the general tasks that use tools that should be available across platforms can run
 
-adapt ws command to instead open or attach to an existing tmuxinator workspace at that directory
-
 TODO:
 * oh-my-zsh
 * update-alternatves
