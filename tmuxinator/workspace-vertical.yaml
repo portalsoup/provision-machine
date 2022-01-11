@@ -1,6 +1,7 @@
 name: workspace-vertical
 root: <%= @args[0] %>
 startup_pane: 3
+on_project_exit: tmux kill-session -t workspace-verticalws pr
 windows:
     - editor:
         layout: c4fc,119x98,0,0[119x43,0,0{47x43,0,0,0,71x43,48,0[71x10,48,0,1,71x32,48,11,2]},119x54,0,44,3]
