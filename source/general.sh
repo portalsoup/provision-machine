@@ -4,7 +4,7 @@ zstyle ':completion:*' completer _extensions _complete _approximate _expand
 zstyle ':completion:*' file-list all 
 zstyle ':completion:*:cd:*:default' list-colors ${(s.:.)LS_COLORS}
 
-cdl() {which
+cdl() {
   cd "$1"
   ls
 }
