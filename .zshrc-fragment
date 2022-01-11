@@ -1,10 +1,13 @@
 autoload -U +X compinit; compinit -u # Enable completions on login
 
+# Local variables
 ZSH_USER_SCRIPTS=~/.zsh_scripts
+USER_SOURCE=$ZSH_USER_SCRIPTS/source
+USER_PATH=$ZSH_USER_SCRIPTS/path
 
 # Assemble PATH
 export PATH=$HOME/bin:/usr/local/bin:$PATH
-export PATH=$ZSH_USER_SCRIPTS/path:$PATH
+export PATH=$USER_PATH:$PATH
 
 ### Aliases/Functions ###
 
@@ -13,7 +16,7 @@ function zscripts() {
 }
 
 ### Custom scripts in ~/.zsh_scripts
-for file in $ZSH_USER_SCRIPTS/source/**/*.sh; do
+for file in $USER_SOURCE/**/*.sh; do
   source "$file"
 done
 
