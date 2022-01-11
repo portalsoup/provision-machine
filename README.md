@@ -18,11 +18,5 @@ done
 ### Install via ansible
 ansible-playbook install.yaml --ask-become-pass
 
-
-
-ansible todo
- oh-my-zsh
- tmuxinator
- copy scripts
- append to zshrc
- platform detection (linux or osx to use apt or homebrew)
+TODO:
+* oh-my-zsh
