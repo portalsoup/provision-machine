@@ -6,3 +6,6 @@ ansible-playbook install.yaml --ask-become-pass
 
 TODO:
 * oh-my-zsh
+* java
+* kotlin
+* kscript
