@@ -1,0 +1,86 @@
+#! /usr/bin/env kscript
+
+import java.io.File
+import java.util.*
+import java.util.zip.ZipFile
+import kotlin.system.exitProcess
+//
+//println("You have passed these args:")
+//for (arg in args) {
+//    println("arg: $arg")
+//}
+
+
+
+/**
+ * Functions
+ */
+
+// group all files that share the same name but differ in extension and put them in a folder together.
+// this isn't good for handling doubles of a game across multiple directories, but will collect stray
+// zip, rom and sav files
+fun groupRoms() {
+    val roms = filterFiles(gamesDirectory.walk().toList())
+
+        roms.groupBy({ it.nameWithoutExtension }) { it }
+        .onEach {
+            val romFolder = romsDirectory.resolve(it.key.replace(" ", "-"))
+            romFolder.mkdir()
+            it.value.forEach {
+                val targetRom = romFolder.resolve(it.name)
+                println("Found: ${it.name}")
+                it.copyTo(targetRom, true)
+            }
+        }
+
+}
+
+fun unzipRoms() {
+    romsDirectory.walk().toList()
+        .filter { it.isFile }
+        .filter { it.extension == "zip" }
+        .onEach { zipfile ->
+            ProcessBuilder()
+                .command("unzip", zipfile.absolutePath)
+                .redirectError(ProcessBuilder.Redirect.INHERIT)
+                .redirectOutput(ProcessBuilder.Redirect.INHERIT)
+                .start()
+                .waitFor()
+        }
+}
+
+fun filterFiles(files: List<File>): List<File> {
+    return files
+        .filter { it.isFile }
+        .filter { it.name != ".DS_Store" }
+}
+
+/**
+ * Work
+ */
+
+val tmpGamesDirectory = File("/tmp/tmpgamelibrary-${UUID.randomUUID()}/")
+val gamesDirectory = File(System.getProperty("user.dir")).takeIf { it.isDirectory } ?: exitProcess(1)
+val romsDirectory = tmpGamesDirectory.resolve("roms")
+
+print("Is this the library you want to organize?\t")
+println(gamesDirectory.absolutePath)
+println("Type 'yes' or 'y' to accept:")
+readLine().takeIf { it == "yes" || it == "y" } ?: exitProcess(1)
+
+tmpGamesDirectory.mkdir()
+romsDirectory.mkdir()
+
+
+
+val files = gamesDirectory.listFiles().filter { it.isFile }.toList()
+val groupedByExtension = files.groupBy({ it.extension }) { it }
+println("Found files in these formats:")
+groupedByExtension.map { "${it.key} ${it.value?.size ?: 0}" }
+    .joinToString("\n")
+    .also { println(it) }
+
+groupRoms()
+unzipRoms()
+
+so kscript seems pretty dope so far, it's a kotlin script runner that abstracts away some of the annoying thing about running scripts through kotlinc.  I broke up my zshrc into a folder containing smaller scripts  so I don't have a 300 line zshrc file anymore.  

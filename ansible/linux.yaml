@@ -1,0 +1,12 @@
+---
+- name: Debian
+  hosts: localhost
+  become: true
+  tasks:
+  - name: Install apt packages
+    apt: 
+      pkg:
+        - zsh
+        - tmux
+        - tmuxinator
+        - htop

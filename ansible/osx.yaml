@@ -1,0 +1,7 @@
+---
+- name: OSX
+  hosts: localhost
+  become: true
+  tasks:
+  - name: osx placeholder
+    debug: "msg=OSX"

@@ -1,0 +1,8 @@
+name: workspace-vertical
+windows:
+    - editor:
+        layout: 94bd,119x98,0,0[119x17,0,0{59x17,0,0,1,59x17,60,0,5},119x80,0,18,4]
+        panes:
+            - tree
+            - vim
+            - 

@@ -1,0 +1,36 @@
+---
+- hosts: localhost
+
+# Tasks that are platform agnostic
+  tasks:
+    - name: Create scripts folder
+      file:
+        state: directory
+        path: ~/.zsh_scripts
+        mode: '0755'
+    
+    - name: Copy source scripts
+      copy:
+        src: ./source
+        dest: ~/.zsh_scripts
+        mode: '+x'
+    
+    - name: Copy path scripts
+      copy:
+        src: ./path
+        dest: ~/.zsh_scripts
+        mode: '+x'
+    
+    - name: Append to zshrc
+      blockinfile: path=~/.zshrc block={{lookup('file', '.zshrc-fragment')}} create=yes state=present
+
+    - name: copy tmuxinator projects
+      copy:
+        src: ./tmuxinator
+        dest: ~/.tmuxinator
+        mode: '+x'
+
+- import_playbook: ansible/linux.yaml
+  when: ansible_facts['os_family'] == "Debian"
+- import_playbook: ansible/osx.yaml
+  when: ansible_facts['os_family'] == "Darwin"
