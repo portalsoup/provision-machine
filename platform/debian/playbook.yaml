@@ -1,0 +1,30 @@
+---
+- name: Debian
+  hosts: localhost
+  become: true
+  tasks:
+  - name: Install apt packages
+    apt: 
+      pkg:
+        - zsh
+        - tmux
+        - tmuxinator
+        - htop
+ 
+  - name: Create scripts folder
+    file:
+      state: directory
+      path: ~/.zsh_scripts
+      mode: '0755'
+    
+  - name: Copy source scripts
+    copy:
+      src: ./source
+      dest: ~/.zsh_scripts
+      mode: '+x'
+    
+  - name: Copy path scripts
+    copy:
+      src: ./path
+      dest: ~/.zsh_scripts
+      mode: '+x'

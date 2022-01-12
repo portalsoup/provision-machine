@@ -7,17 +7,18 @@ if (args.joinToString(" ").contains("help")) {
         """
         Roll dice. 
 
-        Format is: {rolls}d{faces}
+        {rolls}d{faces} {command}
 
-        Example:
-
-            3d6 - throw three 6 faced die
-
-
-        Specify a command to enhance output by performing operations on the results:
+        Specify a command to perform operations on the results:
 
             sum - Sum all the rolls together
             average - Display the average of all rolls as a floating point
+
+        Example:
+
+            3d5 - throw three 6 faced die
+            10d2 average - throw ten 2 sided die and calculate the average between throws
+
         """.trimIndent()
     )
 

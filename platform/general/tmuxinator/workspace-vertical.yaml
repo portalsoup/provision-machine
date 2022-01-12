@@ -4,7 +4,7 @@ startup_pane: 3
 on_project_exit: tmux kill-session -t workspace-vertical
 windows:
     - editor:
-        layout: c4fc,119x98,0,0[119x43,0,0{47x43,0,0,0,71x43,48,0[71x10,48,0,1,71x32,48,11,2]},119x54,0,44,3]
+        layout: 1fbd,119x98,0,0[119x43,0,0{47x43,0,0,0,71x43,48,0[71x22,48,0,1,71x20,48,23,2]},119x54,0,44,3]
         panes:
             - watch -n 1 -d --color tree -C -I build
             - watch -n1 -d --color git colored status -s

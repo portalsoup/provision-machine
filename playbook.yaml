@@ -1,0 +1,10 @@
+---
+- hosts: localhost
+
+- import_playbook:  platform/debian/playbook.yaml
+  when: ansible_facts['os_family'] == "Debian"  
+
+- import_playbook:  platform/darwin/playbook.yaml
+  when: ansible_facts['os_family'] == "Darwin"
+
+- import_playbook: platform/general/playbook.yaml

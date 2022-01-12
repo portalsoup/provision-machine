@@ -22,15 +22,10 @@
         mode: '+x'
     
     - name: Append to zshrc
-      blockinfile: path=~/.zshrc block={{lookup('file', '.zshrc-fragment')}} create=yes state=present
+      blockinfile: path=~/.zshrc block={{lookup('file', './fragments/zshrc-fragment')}} create=yes state=present
 
     - name: copy tmuxinator projects
       copy:
         src: ./tmuxinator
         dest: ~/.tmuxinator
         mode: '+x'
-
-- import_playbook: ansible/linux.yaml
-  when: ansible_facts['os_family'] == "Debian"
-- import_playbook: ansible/osx.yaml
-  when: ansible_facts['os_family'] == "Darwin"
