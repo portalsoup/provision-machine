@@ -1,5 +1,5 @@
----
-- hosts: localhost
+- name: Root
+  hosts: localhost
 
 - import_playbook:  platform/debian/playbook.yaml
   when: ansible_facts['os_family'] == "Debian"  
