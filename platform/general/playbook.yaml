@@ -10,13 +10,13 @@
     
     - name: Copy source scripts
       copy:
-        src: ./source
+        remote_src: ./source
         dest: ~/.zsh_scripts
         mode: '+x'
     
     - name: Copy path scripts
       copy:
-        src: ./path
+        remote_src: ./path
         dest: ~/.zsh_scripts
         mode: '+x'
     
