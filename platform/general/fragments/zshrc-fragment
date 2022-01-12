@@ -1,3 +1,9 @@
+#
+# Don't hand-edit anything in this generated ansible block.  Ansible 
+# will track changes and update it as necessary on subsequent deploys.  
+# The rest of the file can be edited like normal. 
+#
+
 autoload -U +X compinit; compinit -u # Enable completions on login
 
 # Local variables
