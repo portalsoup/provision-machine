@@ -6,7 +6,7 @@
       file:
         state: directory
         path: ~/.zsh_scripts
-        mode: '0755'
+        mode: '+x'
     
     - name: Copy source scripts
       copy:
@@ -27,7 +27,7 @@
       file:
         state: directory
         path: ~/.tmuxinator
-        mode: '0755'
+        mode: '+x'
 
     - name: copy tmuxinator projects
       copy:

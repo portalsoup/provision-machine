@@ -15,7 +15,7 @@
     file:
       state: directory
       path: ~/.zsh_scripts
-      mode: '0755'
+      mode: '+x'
     
   - name: Copy source scripts
     copy:
