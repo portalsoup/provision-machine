@@ -10,13 +10,13 @@
     
     - name: Copy source scripts
       copy:
-        remote_src: ./source
+        src: ./source
         dest: ~/.zsh_scripts
         mode: '+x'
     
     - name: Copy path scripts
       copy:
-        remote_src: ./path
+        src: ./path
         dest: ~/.zsh_scripts
         mode: '+x'
     
@@ -27,7 +27,7 @@
       file:
         state: directory
         path: ~/.tmuxinator
-        mode: '+x'
+        mode: '0755'
 
     - name: copy tmuxinator projects
       copy:
