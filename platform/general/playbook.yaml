@@ -1,7 +1,6 @@
 ---
 - name: General
   hosts: localhost
-  become: true
   tasks:
     - name: Create scripts folder
       file:
@@ -24,8 +23,14 @@
     - name: Append to zshrc
       blockinfile: path=~/.zshrc block={{lookup('file', './fragments/zshrc-fragment')}} create=yes state=present
 
+    - name: Create .tmuxinator folder
+      file:
+        state: directory
+        path: ~/.tmuxinator
+        mode: '0755'
+
     - name: copy tmuxinator projects
       copy:
-        src: ./tmuxinator
-        dest: ~/.tmuxinator
+        src: .tmuxinator
+        dest: ~/
         mode: '+x'

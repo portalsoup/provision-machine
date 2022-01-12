@@ -8,5 +8,5 @@ windows:
         panes:
             - watch -n 1 -d --color tree -C -I build
             - watch -n1 -d --color git colored status -s
-            - watch -n1 -d --color 'git colored log -20 --pretty=tformat:"%Cred%h%Creset %<(35,trunc)%s %C(bold blue)%<(8,trunc)%an%Creset" --abbrev-commit' 
+            - watch -n1 -d --color 'git colored log -20 --pretty=tformat:"%Cred%h%Creset %<(50,trunc)%s %C(bold blue)%<(8,trunc)%an%Creset" --abbrev-commit' 
             - # This is the default focus, open vim or whatever here
