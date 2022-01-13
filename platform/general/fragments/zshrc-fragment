@@ -25,3 +25,6 @@ function zscripts() {
 for file in $USER_SOURCE/**/*.sh; do
   source "$file"
 done
+
+#
+# Anything that is sourced after this block will "override" ansible managed files if necessary
