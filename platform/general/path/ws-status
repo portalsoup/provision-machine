@@ -13,7 +13,7 @@ fun runCmd(cmd: String, vararg args: String): List<String> {
 if (args.joinToString(" ").contains("help")) {
     println(
         """
-
+            Print a single row of key/value pairs with each value colored ${colorize("blue", BLUE_TEXT())}
         """.trimIndent()
     )
 
