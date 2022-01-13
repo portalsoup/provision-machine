@@ -5,13 +5,12 @@ compdef '_files -W "$WORKSPACE_DIR" -/ -g "$WORKSPACE_DIR/*"' ws
 
 ws() { tmuxinator workspace-vertical $WORKSPACE_DIR/$1 }
 
-wsgh() {
-  local url="https://github.com/$1/$2"
+# Add workspace completion to the gh command
+wsgh() { gh $1 }
 
-  local isSharedValid=$(urlStatusCode "$url")
-  if [[ $isSharedValid == 200 || $isSharedValid == 302 ]] 
-  then
-    openFirefoxTab "$url"
-  fi
+# Clone to the workspace folder automatically using the glone command
+# Then open workspace tmux on the new repo
+wsclone() { 
+  (cd $WORKSPACE_DIR; gclone $1)
+  ws $1 
 }
-

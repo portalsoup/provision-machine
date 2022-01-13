@@ -10,6 +10,15 @@
         - tmux
         - tmuxinator
         - htop
+        - openjdk-11-jdk
+
+  - name: Check if sdkman is installed 
+    shell: test -d ~/.sdkman && echo "yes" || echo "no"
+    register: is_sdkman_installed
+
+  - name: Install SDKMan Package Manager
+    shell: curl -s http://get.sdkman.io | bash executable=/bin/bash
+    when : is_sdkman_installed.stdout == "no"
  
   - name: Create scripts folder
     file:
