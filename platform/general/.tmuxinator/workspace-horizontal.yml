@@ -4,7 +4,7 @@ startup_pane: 2
 on_project_exit: tmux kill-session -t workspace-horizontal
 windows:
     - editor:
-        layout: 2a1f,254x49,0,0[254x2,0,0,0,254x46,0,3{31x46,0,3,1,154x46,32,3,6,67x46,187,3[67x11,187,3,2,67x34,187,15,3]}]
+        layout: b24a,254x58,0,0[254x2,0,0,0,254x55,0,3{44x55,0,3,1,141x55,45,3,2,67x55,187,3[67x33,187,3,3,67x21,187,37,4]}]
         panes:
             - watcher 1 ws-status 
             - watcher 1 tree -C -I build
