@@ -1,0 +1,13 @@
+name: workspace-horizontal
+root: <%= @args[0] %>
+startup_pane: 4
+on_project_exit: tmux kill-session -t workspace-horizontal
+windows:
+    - editor:
+        layout: 2a1f,254x49,0,0[254x2,0,0,0,254x46,0,3{31x46,0,3,1,154x46,32,3,6,67x46,187,3[67x11,187,3,2,67x34,187,15,3]}]
+        panes:
+            - watcher 1 ws-status 
+            - watcher 1 tree -C -I build
+            -
+            - watcher 1 'git colored status -s'
+            - watcher 1 'git log --color -20 --pretty=tformat:"%Cred%h%Creset %<(50,trunc)%s %C(bold blue)%<(8,trunc)%an%Creset" --abbrev-commit'

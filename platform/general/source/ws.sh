@@ -3,7 +3,19 @@ export WORKSPACE_DIR=$HOME/workspace
 compdef '_files -W "$WORKSPACE_DIR" -/ -g "$WORKSPACE_DIR/*"' wsgh
 compdef '_files -W "$WORKSPACE_DIR" -/ -g "$WORKSPACE_DIR/*"' ws
 
-ws() { tmuxinator workspace-vertical $WORKSPACE_DIR/$1 }
+ws() { 
+  local workspaceConfig
+  if [ -z "$2" ]; then
+    workspaceConfig="workspace-vertical"
+  else
+    if [[ "$1" == "-v" ]]; then
+      workspaceConfig="workspace-vertical"
+    elif [[ "$1" == "-h" ]]
+      workspaceConfig="workspace-horizontal"
+  fi
+
+  tmuxinator $workspaceConfig $WORKSPACE_DIR/${@: -1} 
+}
 
 # Add workspace completion to the gh command
 wsgh() { gh $1 }
