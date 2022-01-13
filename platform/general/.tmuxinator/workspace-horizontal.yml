@@ -1,6 +1,6 @@
 name: workspace-horizontal
 root: <%= @args[0] %>
-startup_pane: 4
+startup_pane: 2
 on_project_exit: tmux kill-session -t workspace-horizontal
 windows:
     - editor:
