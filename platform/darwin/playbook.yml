@@ -1,19 +1,15 @@
 ---
 - name: OSX
   hosts: localhost
-  become: true
   tasks:
-    - name: osx placeholder
-      debug: "msg=OSX"
-    
     - name: Copy source scripts
       copy:
         src: ./source
-        dest: ~/.zsh_scripts/osx
+        dest: ~/.zsh_scripts/osx/
         mode: '+x'
     
     - name: Copy path scripts
       copy:
         src: ./path
-        dest: ~/.zsh_scripts/osx
+        dest: ~/.zsh_scripts/osx/
         mode: '+x'
