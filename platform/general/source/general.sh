@@ -4,6 +4,10 @@ zstyle ':completion:*' completer _extensions _complete _approximate _expand
 zstyle ':completion:*' file-list all 
 zstyle ':completion:*:cd:*:default' list-colors ${(s.:.)LS_COLORS}
 
+update-provision() {
+  ansible-pull -U https://github.com/portalsoup/provision-machine.git -i $(hostname --short) local.yml --ask-become-pass
+}
+
 cdl() {
   cd "$1"
   ls
