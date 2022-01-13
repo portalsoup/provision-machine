@@ -44,3 +44,5 @@ hideCursor() {
 showCursor() {
   tput cnorm
 }
+
+roll() { roll.kts "$@" }

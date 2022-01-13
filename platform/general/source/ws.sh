@@ -23,6 +23,8 @@ wsgh() { gh $1 }
 # Clone to the workspace folder automatically using the glone command
 # Then open workspace tmux on the new repo
 wsclone() { 
-  (cd $WORKSPACE_DIR; gclone $1)
-  ws $1 
+  (cd $WORKSPACE_DIR; gclone "$@")
+  ws "${@: -1}"
 }
+
+ws-status() { status-bar.kts }

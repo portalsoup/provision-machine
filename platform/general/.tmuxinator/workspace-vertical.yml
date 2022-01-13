@@ -6,7 +6,7 @@ windows:
     - editor:
         layout: 8f30,119x98,0,0[119x43,0,0[119x2,0,0,0,119x40,0,3{51x40,0,3,1,67x40,52,3[67x26,52,3,2,67x13,52,30,3]}],119x54,0,44,4]
         panes:
-            - watcher 1 ws-status 
+            - watcher 1 ws-status
             - watcher 1 tree -C -I build
             - watcher 1 'git colored status -s'
             - watcher 1 'git log --color -20 --pretty=tformat:"%Cred%h%Creset %<(50,trunc)%s %C(bold blue)%<(8,trunc)%an%Creset" --abbrev-commit'
