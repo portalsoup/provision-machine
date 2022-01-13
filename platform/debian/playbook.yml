@@ -1,9 +1,9 @@
 ---
 - name: Debian
   hosts: localhost
-  become: true
   tasks:
   - name: Install apt packages
+    become: true
     apt: 
       pkg:
         - zsh
@@ -19,21 +19,15 @@
   - name: Install SDKMan Package Manager
     shell: curl -s http://get.sdkman.io | bash executable=/bin/bash
     when : is_sdkman_installed.stdout == "no"
- 
-  - name: Create scripts folder
-    file:
-      state: directory
-      path: ~/.zsh_scripts
-      mode: '+x'
     
   - name: Copy source scripts
     copy:
       src: ./source
-      dest: ~/.zsh_scripts
+      dest: ~/.zsh_scripts/debian
       mode: '+x'
     
   - name: Copy path scripts
     copy:
       src: ./path
-      dest: ~/.zsh_scripts
+      dest: ~/.zsh_scripts/debian
       mode: '+x'

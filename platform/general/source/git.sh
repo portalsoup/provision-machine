@@ -1,5 +1,5 @@
 # Other git related commands can substitue the user or org with this variable for convenience
-export GIT_CONTEXT=portalsoup # TODO this needs to be a file so it can be shared between shell sessions dynamically, use file with jq maybe to act as a config store
+export GIT_CONTEXT=portalsoup # TODO this needs to be a file so it can be shared between shell sessions dynamically, use with jq maybe to act as a config store
 
 # Get the current context if no args are given, or set the first arg as the new context
 gcontext() {

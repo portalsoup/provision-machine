@@ -2,12 +2,6 @@
 - name: General
   hosts: localhost
   tasks:
-    - name: Create scripts folder
-      file:
-        state: directory
-        path: ~/.zsh_scripts
-        mode: '+x'
-    
     - name: Copy source scripts
       copy:
         src: ./source
@@ -19,12 +13,6 @@
         src: ./path
         dest: ~/.zsh_scripts
         mode: '+x'
-
-    - name: Create .tmuxinator folder
-      file:
-        state: directory
-        path: ~/.tmuxinator
-        mode: '0755'
 
     - name: copy tmuxinator projects
       copy:
