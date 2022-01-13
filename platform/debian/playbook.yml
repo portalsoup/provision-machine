@@ -33,3 +33,4 @@
       src: ./path
       dest: ~/.zsh_scripts/debian
       mode: '+x'
+      
