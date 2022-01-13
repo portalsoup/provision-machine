@@ -19,9 +19,6 @@
         src: ./path
         dest: ~/.zsh_scripts
         mode: '+x'
-    
-    - name: Append to zshrc
-      blockinfile: path=~/.zshrc block={{lookup('file', './fragments/zshrc-fragment')}} create=yes state=present
 
     - name: Create .tmuxinator folder
       file:
@@ -34,3 +31,6 @@
         src: .tmuxinator
         dest: ~/
         mode: '+x'
+    
+    - name: Append to zshrc
+      blockinfile: path=~/.zshrc block={{lookup('file', './fragments/zshrc-fragment')}} create=yes state=present

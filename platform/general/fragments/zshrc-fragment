@@ -25,4 +25,3 @@ function zscripts() {
 for file in $USER_SOURCE/**/*.sh; do
   source "$file"
 done
-

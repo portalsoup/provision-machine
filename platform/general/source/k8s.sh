@@ -1,3 +1,5 @@
+alias k=kubectl
+
 kall() {
   for context in $(kubectl config get-contexts -o name); do
     tput setaf 82
