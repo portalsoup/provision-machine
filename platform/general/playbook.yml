@@ -19,6 +19,20 @@
         src: .tmuxinator
         dest: ~/
         mode: '+x'
-    
+
+    - name: create config.json
+      file:
+        path: ~/.zsh_scripts/config.json
+        state: touch
+        mode: 'u=rw,g=r,o=r'
+        modification_time: preserve
+        access_time: preserve
+
+    - name: copy config.json
+      copy:
+        src: ./config.json
+        dest: ~/.zsh_scripts/config.json
+        mode: '0644'
+
     - name: Append to zshrc
       blockinfile: path=~/.zshrc block={{lookup('file', './fragments/zshrc-fragment')}} create=yes state=present

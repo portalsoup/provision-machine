@@ -11,6 +11,8 @@
         - tmuxinator
         - htop
         - openjdk-11-jdk
+        - jq
+        - moreutils # this is where sponge lives
 
   - name: Check if sdkman is installed 
     shell: test -d ~/.sdkman && echo "yes" || echo "no"

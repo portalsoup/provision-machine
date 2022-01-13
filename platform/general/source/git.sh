@@ -1,14 +1,14 @@
 # Other git related commands can substitue the user or org with this variable for convenience
-export GIT_CONTEXT=portalsoup # TODO this needs to be a file so it can be shared between shell sessions dynamically, use with jq maybe to act as a config store
 
 # Get the current context if no args are given, or set the first arg as the new context
-gcontext() {
+# 
+# Uses the file at ~/.zsh_scripts/config.json to persist configuration
+gctx() {
     if [ -z "$1" ]; then
-        echo "$GIT_CONTEXT"
+        jq ".git_context" ~/.zsh_scripts/config.json
         return 0
     fi 
-    export GIT_CONTEXT=$1
-    
+    jq --arg value "$1" '.git_context = $value' ~/.zsh_scripts/config.json | sponge ~/.zsh_scripts/config.json  
 }
 
 # Open a github repo in firefox using the global context based on how many args is given
@@ -17,7 +17,7 @@ gh() {
     if [ "$2" ]; then
         url="https://github.com/$1/$2"
     elif [ "$1" ]; then
-        url="https://github.com/$GIT_CONTEXT/$1"
+        url="https://github.com/$(gctx)/$1"
     fi
 
     local isSharedValid=$(urlStatusCode "$url")
@@ -32,6 +32,6 @@ gclone() {
     if [ "$2" ]; then
         git clone git@github.com:$1/$2.git
     elif [ "$1" ]; then
-        git clone git@github.com:$GIT_CONTEXT/$1.git
+        git clone git@github.com:$(gctx))/$1.git
     fi
 }
