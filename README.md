@@ -2,7 +2,11 @@ Contents of path/ are script files that should be added to the PATH to be callab
 Contents of source/ are bash scripts that should be sourced and resolved immediately by shell
 
 ### Provision a machine with ansible
-ansible-playbook playbook.yaml --ask-become-pass
+    ansible-playbook playbook.yaml --ask-become-pass
+
+or to provision remotely:
+
+    ansible-pull -U https://github.com/portalsoup/provision-machine.git -i $(hostname --short) local.yaml --ask-become-pass
 
 group all content by platform and general
 
