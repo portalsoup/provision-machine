@@ -1,8 +1,5 @@
 export WORKSPACE_DIR=$HOME/workspace
 
-compdef '_files -W "$WORKSPACE_DIR" -/ -g "$WORKSPACE_DIR/*"' wsgh
-compdef '_files -W "$WORKSPACE_DIR" -/ -g "$WORKSPACE_DIR/*"' ws
-
 ws() { 
   local orientation=$(ctx default_mux_orientation)
   local workspaceConfig
@@ -19,9 +16,6 @@ ws() {
   tmuxinator $workspaceConfig $WORKSPACE_DIR/${@: -1} 
 }
 
-# Add workspace completion to the gh command
-wsgh() { gh $1 }
-
 # Clone to the workspace folder automatically using the glone command
 # Then open workspace tmux on the new repo
 wsclone() { 
@@ -30,3 +24,7 @@ wsclone() {
 }
 
 ws-status() { status-bar.kts }
+
+# Which commands get workspace completion
+compdef '_files -W "$WORKSPACE_DIR" -/ -g "$WORKSPACE_DIR/*"' gh
+compdef '_files -W "$WORKSPACE_DIR" -/ -g "$WORKSPACE_DIR/*"' ws
