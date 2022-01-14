@@ -2,6 +2,10 @@ k() {
   kubectl --context="$(ctx kube_context)" "$@"
 }
 
+kname() {
+  k -n "$(ctx kube_namespace)" "$@"
+}
+
 kall() {
   for context in $(kubectl config get-contexts -o name); do
     tput setaf 82
