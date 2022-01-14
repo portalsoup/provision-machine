@@ -12,7 +12,7 @@ kall() {
 }
 
 _list-kctx() {
-  "k config get-contexts --output=name"
+  "kubectl config get-contexts --output=name"
 }
 
 kctx() {
