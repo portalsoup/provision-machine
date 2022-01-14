@@ -4,19 +4,19 @@ k() {
 
   contextArg=
   if [[ "$context" ]]; then
-    contextArg="--context=$context"
+    contextArg="--context $context"
   else
     echo "kube_context is not set"
   fi
 
   namespaceArg=
   if [[ "$namespace" ]]; then
-    contextArg="-n=$namespace"
+    namespaceArg="-n $namespace"
   else
     echo "kube_namespace is not set"
   fi
 
-  kubectl "$contextArg $namespaceArg" "$@"
+  eval "kubectl $contextArg $namespaceArg $@"
 }
 
 kname() {

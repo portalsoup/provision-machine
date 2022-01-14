@@ -13,3 +13,19 @@ ctx() {
         ctx-write-value.kts $1 $2
     fi
 }
+
+# add completion for ctx by maintaining a list of properties
+
+# k8s completions
+_ctx_completion() {
+    possibleValues=(
+        "git_context"
+        "git_host"
+        "default_mux_orientation"
+        "kube_context"
+        "kube_namespace"
+    )
+    _values -s ' ' $possibleValues
+}
+
+compdef _ctx_completion ctx
