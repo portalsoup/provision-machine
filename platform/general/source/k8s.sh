@@ -1,4 +1,6 @@
-alias k=kubectl
+k() {
+  kubectl --context="$(ctx kube_context)" "$@"
+}
 
 kall() {
   for context in $(kubectl config get-contexts -o name); do

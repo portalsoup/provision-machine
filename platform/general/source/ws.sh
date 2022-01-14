@@ -4,9 +4,11 @@ compdef '_files -W "$WORKSPACE_DIR" -/ -g "$WORKSPACE_DIR/*"' wsgh
 compdef '_files -W "$WORKSPACE_DIR" -/ -g "$WORKSPACE_DIR/*"' ws
 
 ws() { 
+  local orientation=$(ctx default_mux_orientation)
   local workspaceConfig
-  if [ -z "$2" ]; then
-    workspaceConfig="workspace-vertical"
+  if [ -z "$2" ]; then # only 1 arg means no orientation flag, so use store
+    echo "using orientation"
+    workspaceConfig="workspace-$orientation"
   else
     if [[ "$1" == "-v" ]]; then
       workspaceConfig="workspace-vertical"
