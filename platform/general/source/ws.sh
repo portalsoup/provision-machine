@@ -4,7 +4,6 @@ ws() {
   local orientation=$(ctx default_mux_orientation)
   local workspaceConfig
   if [ -z "$2" ]; then # only 1 arg means no orientation flag, so use store
-    echo "using orientation"
     workspaceConfig="workspace-$orientation"
   else
     if [[ "$1" == "-v" ]]; then
@@ -14,6 +13,10 @@ ws() {
   fi
 
   tmuxinator $workspaceConfig $WORKSPACE_DIR/${@: -1} 
+}
+
+wcd() {
+  cd "$WORKSPACE_DIR/$@"
 }
 
 # Clone to the workspace folder automatically using the glone command
@@ -28,3 +31,4 @@ ws-status() { status-bar.kts }
 # Which commands get workspace completion
 compdef '_files -W "$WORKSPACE_DIR" -/ -g "$WORKSPACE_DIR/*"' gh
 compdef '_files -W "$WORKSPACE_DIR" -/ -g "$WORKSPACE_DIR/*"' ws
+compdef '_files -W "$WORKSPACE_DIR" -/ -g "$WORKSPACE_DIR/*"' wcd

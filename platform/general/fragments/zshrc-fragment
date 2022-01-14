@@ -7,7 +7,7 @@
 autoload -U +X compinit; compinit -u # Enable completions on login
 
 # Local variables
-ZSH_USER_SCRIPTS=~/.zsh_scripts
+export ZSH_USER_SCRIPTS=~/.zsh_scripts
 
 # Assemble PATH
 export PATH=$HOME/bin:/usr/local/bin:$PATH

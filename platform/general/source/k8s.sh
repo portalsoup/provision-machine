@@ -11,10 +11,17 @@ kall() {
   done
 }
 
+_list-kctx() {
+  "k config get-contexts --output=name"
+}
+
 kctx() {
-  if [[ "$1" == "get" ]]; then
-    k config get-contexts
-  elif [[ "$1" == "switch" ]]; then
+  if [[ -z "$1" ]]; then
+    _list-kctx
+  else
+    ctx kube_context "$2"
     k config use-context "$2"
   fi
 }
+
+compdef _list-kctx kctx
