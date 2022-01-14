@@ -21,13 +21,22 @@ if (args.size < 2) {
     System.exit(1)
 }
 
+
 // Read current config file
 val contextFile = File("${System.getenv("HOME")}/.zsh_scripts/context.json")
 val contextStr: String = contextFile.readText(Charsets.UTF_8)
 val context = JSONObject(contextStr)
 
 // add or update key
-context.put(args[0], args[1])
+
+if (args[0].startsWith("-")) {
+    if (args[0] == "-d") {
+        println("removing ${args[1]}")
+        context.remove(args[1])
+    }
+} else {
+    context.put(args[0], args[1])
+}
 
 // write new context back
 contextFile.writeText(context.toString())

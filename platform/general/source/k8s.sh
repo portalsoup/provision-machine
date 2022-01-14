@@ -1,5 +1,14 @@
 k() {
-  kubectl --context="$(ctx kube_context)" "$@"
+  context=$(ctx kube_context)
+  namespace=$(ctx kube_namespace)
+
+  if ! ctx kube_namespace </dev/null > /dev/null 2>&1; then
+    echo "no namespace"
+    kubectl --context="$(ctx kube_context)" -n="$(ctx kube_namespace)" "$@"
+  else
+    echo "namespace"
+    kubectl --context="$(ctx kube_context)" "$@"
+  fi
 }
 
 kname() {
