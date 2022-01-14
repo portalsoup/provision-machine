@@ -13,7 +13,7 @@ kall() {
 
 kctx() {
   if [[ -z "$1" ]]; then
-    _list-kctx
+    kubectl config get-contexts --output=name
   else
     ctx kube_context "$1"
     kubectl config use-context "$1"
@@ -22,9 +22,13 @@ kctx() {
 
 # k8s completions
 
-_list-kctx() {
-  _values $(kubectl config get-contexts --output=name)
+list-kctx() {
+  kubectl config get-contexts --output=name
+}
+
+_kctx_completion() {
+  _values $(list-kctx)
 }
 
 
-compdef _list-kctx kctx
+compdef _kctx_completion kctx
