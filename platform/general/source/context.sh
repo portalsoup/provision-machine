@@ -1,7 +1,7 @@
 ctx() {
     local contextLocation=~/.zsh_scripts/context.json
     if [[ -z "$1" ]]; then 
-        cat $contextLocation
+        jq . $contextLocation
     elif [[ -z "$2" ]]; then
         if jq -e -r ."$1" $contextLocation </dev/null > /dev/null 2>&1; then
              jq -r ."$1" $contextLocation
