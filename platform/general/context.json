@@ -1,7 +1,5 @@
 {
     "git_context": "portalsoup",
     "git_host": "github.com",
-    "default_mux_orientation": "vertical",
-    "kube_context": "",
-    "kube_namespace": ""
+    "default_mux_orientation": "vertical"
 }
