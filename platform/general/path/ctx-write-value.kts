@@ -16,29 +16,27 @@ fun runCmd(cmd: String, vararg args: String): List<String> {
 if (args.joinToString(" ").contains("help")) {
     println(
         """
-            Print a single row of key/value pairs with each value colored ${colorize("blue", BLUE_TEXT())}
+            Create or update a single key/value pair in the context file
         """.trimIndent()
     )
 
     System.exit(0)
 }
 
+if (args.size < 2) {
+    println("Need both a key and a pair")
+    System.exit(1)
+}
+
 val pwd = runCmd("pwd").first()
 val dirName = runCmd("basename", pwd).first()
 
 // Read current config file
-val configStr: String = File("${System.getenv("HOME")}/.zsh_scripts/config.json").readText(Charsets.UTF_8)
+val configFile = File("${System.getenv("HOME")}/.zsh_scripts/config.json")
+val configStr: String = configFile.readText(Charsets.UTF_8)
 val config = JSONObject(configStr)
 
+// add or update key
+config.put(args[0], args[1])
 
-// Populate the map of tokens to print
-val stats: Map<String, String> = mutableMapOf(
-    "project" to dirName,
-).apply {
-    config.toMap()
-        .mapValues { it.value.toString() }
-        .let { putAll(it) }
-}
-
-
-println(stats.map { (k, v) -> "$k:${colorize("$v", BLUE_TEXT())}" }.joinToString("  "))
+configFile.writeText(config.toString())

@@ -1,16 +1,3 @@
-# Other git related commands can substitue the user or org with this variable for convenience
-
-# Get the current context if no args are given, or set the first arg as the new context
-# 
-# Uses the file at ~/.zsh_scripts/config.json to persist configuration
-gctx() {
-    if [ -z "$1" ]; then
-        jq -r ".git_context" ~/.zsh_scripts/config.json
-        return 0
-    fi 
-    jq --arg value "$1" '.git_context = $value' ~/.zsh_scripts/config.json | sponge ~/.zsh_scripts/config.json  
-}
-
 # Open a github repo in firefox using the global context based on how many args is given
 gh() {
     local url
