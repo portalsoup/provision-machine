@@ -32,11 +32,11 @@ val pwd = runCmd("pwd").first()
 val dirName = runCmd("basename", pwd).first()
 
 // Read current config file
-val configFile = File("${System.getenv("HOME")}/.zsh_scripts/config.json")
-val configStr: String = configFile.readText(Charsets.UTF_8)
-val config = JSONObject(configStr)
+val contextFile = File("${System.getenv("HOME")}/.zsh_scripts/context.json")
+val contextStr: String = contextFile.readText(Charsets.UTF_8)
+val context = JSONObject(contextStr)
 
 // add or update key
-config.put(args[0], args[1])
+context.put(args[0], args[1])
 
-configFile.writeText(config.toString())
+contextFile.writeText(context.toString())

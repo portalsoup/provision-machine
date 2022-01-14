@@ -1,5 +1,5 @@
 ctx() {
-    local contextLocation=~/.zsh_scripts/config.json
+    local contextLocation=~/.zsh_scripts/context.json
     if [[ -z "$2" ]]; then
         jq -r ."$1" $contextLocation
         return 0

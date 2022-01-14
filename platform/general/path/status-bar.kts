@@ -26,16 +26,16 @@ if (args.joinToString(" ").contains("help")) {
 val pwd = runCmd("pwd").first()
 val dirName = runCmd("basename", pwd).first()
 
-// Read current config file
-val configStr: String = File("${System.getenv("HOME")}/.zsh_scripts/config.json").readText(Charsets.UTF_8)
-val config = JSONObject(configStr)
+// Read current context file
+val contextStr: String = File("${System.getenv("HOME")}/.zsh_scripts/context.json").readText(Charsets.UTF_8)
+val context = JSONObject(contextStr)
 
 
 // Populate the map of tokens to print
 val stats: Map<String, String> = mutableMapOf(
     "project" to dirName,
 ).apply {
-    config.toMap()
+    context.toMap()
         .mapValues { it.value.toString() }
         .let { putAll(it) }
 }
