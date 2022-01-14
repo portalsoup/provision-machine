@@ -16,7 +16,7 @@ kctx() {
     _list-kctx
   else
     ctx kube_context "$1"
-    k config use-context "$1"
+    kubectl config use-context "$1"
   fi
 }
 
