@@ -21,14 +21,8 @@ kctx() {
 }
 
 # k8s completions
-
-list-kctx() {
-  kubectl config get-contexts --output=name
-}
-
 _kctx_completion() {
-  _values $(list-kctx)
+  _values $(kctx)
 }
-
 
 compdef _kctx_completion kctx
