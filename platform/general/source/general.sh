@@ -37,6 +37,8 @@ watcher() {
   done
 }
 
+treeWatch() {watcher 1 tree -C -I build -L 2 }
+
 hideCursor() {
   tput civis
 }
